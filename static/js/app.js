@@ -34,7 +34,9 @@ function init() {
         var x = dropSelect.append('option').text(element);
         x.value = element;
         });
-  
+
+
+        
   
         function optionChanged(newSample) {
           // Fetch new data each time a new sample is selected
