@@ -1,12 +1,22 @@
 function buildCharts(sample) {
     // Make an API call to gather all data and then reduce to matching the sample selected
-    //TODO: 
+    //TODO:
+    d3.json('samples.json').then((data)=> {
+
+      var sampleValues = data.samples
+      var otuIds
+      var otuLabels
+      console.log(sample)
+
+
+    })
 
 };
 
 function buildMetadata(sample) {
     // Make an API call to gather all data and then reduce to matching the sample selected
     //TODO: 
+    console.log(sample)
 
 };
 
@@ -28,10 +38,10 @@ function init() {
       //TODO: 
 
 
-      // let allSamples = Array.from(new Set(tableData.map(element => element.country)));
+
       sampleNames.forEach(element => {
-        var dropdownSelect = selector.append('option').text(element);
-        dropdownSelect.value = element;
+        var dropdownSelect = selector.append('option').text(element).value(element);
+        // dropdownSelect.value = element;
         });
 
       
