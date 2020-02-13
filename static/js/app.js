@@ -30,13 +30,13 @@ function init() {
 
       // let allSamples = Array.from(new Set(tableData.map(element => element.country)));
       sampleNames.forEach(element => {
-        var dropSelect = d3.select("#selDataset");
-        var x = dropSelect.append('option').text(element);
-        x.value = element;
+        var dropdownSelect = selector.append('option').text(element);
+        dropdownSelect.value = element;
         });
 
+      
 
-        
+
   
         function optionChanged(newSample) {
           // Fetch new data each time a new sample is selected
