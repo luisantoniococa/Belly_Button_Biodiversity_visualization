@@ -20,6 +20,13 @@ function buildCharts(sample) {
       // console.log(otuLabels)
       console.log(newSampleObj)
 
+      var output = newSampleObj.map(function(obj) {
+        return Object.keys(obj).sort().map(function(key) { 
+          return obj[key];
+        });
+      });
+      console.log(output)
+
 
 
     })
