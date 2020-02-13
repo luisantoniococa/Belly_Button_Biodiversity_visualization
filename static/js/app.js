@@ -4,9 +4,22 @@ function buildCharts(sample) {
     d3.json('samples.json').then((data)=> {
 
       var sampleValues = data.samples
-      var otuIds
-      var otuLabels
-      console.log(sample)
+      var location;
+      for(var i = 0;i<sampleValues.length;i++){
+        if (sampleValues[i].id === sample){
+          location = i
+          break;
+        }
+      }
+      var newSampleObj = data.samples[location]
+      // sampleValues = data.samples[location].sample_values
+      // var otuIds = data.samples[location].otu_ids
+      // var otuLabels = data.samples[location].otu_labels
+      // console.log(sampleValues)
+      // console.log(otuIds)
+      // console.log(otuLabels)
+      console.log(newSampleObj)
+
 
 
     })
@@ -40,20 +53,22 @@ function init() {
 
 
       sampleNames.forEach(element => {
-        var dropdownSelect = selector.append('option').text(element).value(element);
-        // dropdownSelect.value = element;
+        var dropdownSelect = selector.append('option').text(element);
+        dropdownSelect.value = element;
         });
 
       
 
 
   
-        function optionChanged(newSample) {
-          // Fetch new data each time a new sample is selected
-          buildCharts(newSample);
-          buildMetadata(newSample);
-        }
+        
       });
+
+      function optionChanged(newSample) {
+        // Fetch new data each time a new sample is selected
+        buildCharts(newSample);
+        buildMetadata(newSample);
+      }
 }
   // Initialize the dashboard
   init();
