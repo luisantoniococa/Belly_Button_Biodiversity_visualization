@@ -18,17 +18,20 @@ function buildCharts(sample) {
       // console.log(sampleValues)
       // console.log(otuIds)
       // console.log(otuLabels)
-      console.log(newSampleObj)
+      
 
-      var output = newSampleObj.map(function(obj) {
-        return Object.keys(obj).sort().map(function(key) { 
-          return obj[key];
-        });
-      });
-      console.log(output)
-
-
-
+      // var output = newSampleObj.sample_values.map(function(obj) {
+      //   return Object.keys(obj).sort().map(function(key) { 
+      //     return obj[key];
+      //   });
+      // });
+      // console.log(output)
+      var newSampleObj2 = []
+      // newSampleObj.forEach(x => newSampleObj2.push({"sample_values": x.sample_values}))
+    
+      console.log(newSampleObj.sample_values)
+      newSampleObj.sample_values.forEach(x => newSampleObj2.push({"sample_values": x}))
+      console.log(newSampleObj2)
     })
 
 };
