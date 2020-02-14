@@ -56,9 +56,21 @@ function buildCharts(sample) {
         type: "bar",
         orientation: "h"
       };
-      
+      var trace2 = {
+        x: newSampleObj2.map(object => object.otu_ids),
+        y: newSampleObj2.map(object => object.sample_values),
+        text: newSampleObj2.map(object => object.otu_labels),
+        // name: "",
+        mode: "markers",
+        marker: {
+          color: newSampleObj2.map(object => object.otu_ids * 30),
+          size: newSampleObj2.map(object => object.sample_values)
+        }
+      };
+
       // data
       var data = [trace1];
+      var data2 = [trace2];
       
       // Apply the group bar mode to the layout
       var layout = {
@@ -67,6 +79,8 @@ function buildCharts(sample) {
       
       // Render the plot to the div tag with id "plot"
       Plotly.newPlot("bar", data, layout);
+      Plotly.newPlot("bubble", data2);
+
     })
 
 };
@@ -75,6 +89,13 @@ function buildMetadata(sample) {
     // Make an API call to gather all data and then reduce to matching the sample selected
     //TODO: 
     console.log(sample)
+    d3.json('samples.json').then((data)=> {
+
+
+
+
+
+    };
 
 };
 
@@ -109,11 +130,11 @@ function init() {
         
       });
 
-      function thi(newSample) {
-        // Fetch new data each time a new sample is selected
-        buildCharts(newSample);
-        buildMetadata(newSample);
-      }
+      // function thi(newSample) {
+      //   // Fetch new data each time a new sample is selected
+      //   buildCharts(newSample);
+      //   buildMetadata(newSample);
+      // }
 }
   // Initialize the dashboard
   init();
