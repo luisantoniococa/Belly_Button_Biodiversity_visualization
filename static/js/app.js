@@ -30,8 +30,13 @@ function buildCharts(sample) {
       // newSampleObj.forEach(x => newSampleObj2.push({"sample_values": x.sample_values}))
     
       console.log(newSampleObj.sample_values)
-      newSampleObj.sample_values.forEach(x => newSampleObj2.push({"sample_values": x}))
-      console.log(newSampleObj2)
+      // newSampleObj.forEach((x,i) => newSampleObj2.push({"sample_values": i.sample_values}))
+      // newSampleObj.map((x) => newSampleObj2.push({ 1:`${x.sample_values}`}))
+      delete newSampleObj.id
+      // newSampleObj.forEach((x) => newSampleObj2.push({"sample_values": i.sample_values}))
+      
+      console.log(newSampleObj.sample_values[0])
+      
     })
 
 };
