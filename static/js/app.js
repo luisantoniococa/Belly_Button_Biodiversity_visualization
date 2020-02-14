@@ -29,7 +29,7 @@ function buildCharts(sample) {
       var newSampleObj2 = []
       // newSampleObj.forEach(x => newSampleObj2.push({"sample_values": x.sample_values}))
     
-      console.log(newSampleObj.sample_values)
+      // console.log(newSampleObj.sample_values)
       // newSampleObj.forEach((x,i) => newSampleObj2.push({"sample_values": i.sample_values}))
       // newSampleObj.map((x) => newSampleObj2.push({ 1:`${x.sample_values}`}))
       delete newSampleObj.id
@@ -40,13 +40,13 @@ function buildCharts(sample) {
       for(var i = 0; i<newSampleObj.sample_values.length;i++){
         newSampleObj2.push({"sample_values": newSampleObj.sample_values[i],"otu_ids": newSampleObj.otu_ids[i], 'otu_labels': newSampleObj.otu_labels[i] })
       };
-      console.log(newSampleObj2);
+      // console.log(newSampleObj2);
       var top10founded = newSampleObj2.sort((a,b)=> b.sample_values - a.sample_values);
-      console.log(top10founded);
+      // console.log(top10founded);
       top10founded = top10founded.slice(0,10);
-      console.log(top10founded);
+      // console.log(top10founded);
       top10founded = top10founded.reverse();
-      console.log(top10founded);
+      // console.log(top10founded);
 
       var trace1 = {
         x: top10founded.map(object => object.sample_values),
@@ -88,14 +88,41 @@ function buildCharts(sample) {
 function buildMetadata(sample) {
     // Make an API call to gather all data and then reduce to matching the sample selected
     //TODO: 
-    console.log(sample)
+    
     d3.json('samples.json').then((data)=> {
 
+      var values = data.metadata
+      var place;
+      for (var i = 0;i<values.length;i++){
+        if (values[i].id === +sample){
+          place = i;
+          break;
+        }
+      }
+      var foundSample = values[place];
+      var panelContent = d3.select('#sample-metadata');
+      panelContent.html("");
+      for(var i in foundSample){
+        panelContent.append('p').text(`${i}:${foundSample[i]}`)
+
+      }
+      // var row = panelContent.append('p').text(`${foundSample[0]}:${foundSample.id}`)
+      // console.log(place)
+      // console.log(+sample)
+
+//       "id": 940,
+// "ethnicity": "Caucasian",
+// "gender": "F",
+// "age": 24,
+// "location": "Beaufort/NC",
+// "bbtype": "I",
+// "wfreq": 2
+
+      // console.log(values)
 
 
 
-
-    };
+    });
 
 };
 
@@ -112,7 +139,7 @@ function init() {
       var firstSample = sampleNames[0];
       buildCharts(firstSample);
       buildMetadata(firstSample);
-
+      buildGauge(firstSample);
       // Loop through sampleNames to add "option" elements to the selector
       //TODO: 
 
