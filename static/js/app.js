@@ -12,29 +12,13 @@ function buildCharts(sample) {
         }
       }
       var newSampleObj = data.samples[location]
-      // sampleValues = data.samples[location].sample_values
-      // var otuIds = data.samples[location].otu_ids
-      // var otuLabels = data.samples[location].otu_labels
-      // console.log(sampleValues)
-      // console.log(otuIds)
-      // console.log(otuLabels)
-      
-
-      // var output = newSampleObj.sample_values.map(function(obj) {
-      //   return Object.keys(obj).sort().map(function(key) { 
-      //     return obj[key];
-      //   });
-      // });
-      // console.log(output)
+     
       var newSampleObj2 = []
       // newSampleObj.forEach(x => newSampleObj2.push({"sample_values": x.sample_values}))
     
-      // console.log(newSampleObj.sample_values)
-      // newSampleObj.forEach((x,i) => newSampleObj2.push({"sample_values": i.sample_values}))
-      // newSampleObj.map((x) => newSampleObj2.push({ 1:`${x.sample_values}`}))
+ 
       delete newSampleObj.id
-      // newSampleObj.forEach((x) => newSampleObj2.push({"sample_values": i.sample_values}))
-
+    
 
       // we created an array of objects with the individual data since it will be easier to organize and aggregate the data.
       for(var i = 0; i<newSampleObj.sample_values.length;i++){
@@ -106,21 +90,7 @@ function buildMetadata(sample) {
         panelContent.append('p').text(`${i}:${foundSample[i]}`)
 
       }
-      // var row = panelContent.append('p').text(`${foundSample[0]}:${foundSample.id}`)
-      // console.log(place)
-      // console.log(+sample)
-
-//       "id": 940,
-// "ethnicity": "Caucasian",
-// "gender": "F",
-// "age": 24,
-// "location": "Beaufort/NC",
-// "bbtype": "I",
-// "wfreq": 2
-
-      // console.log(values)
-
-
+     
 
     });
 
